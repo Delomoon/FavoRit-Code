@@ -1,10 +1,8 @@
 .cm-keyword { color: #ea5f5f !important; font-weight: bold !important; }
 .cm-string { color: #eaa25f !important; }
-.cm-comment { color: gray !important; font-style: italic !important; }
-.cm-number { color: rgb(86, 117, 165) !important; }
-.cm-variable { color: #9fb0c8 !important; }
-.cm-def { color: #02afff !important; font-style: italic !important;} /* Цвет для определения функции или переменной */
-
+.cm-comment { color: #808080 !important; font-style: italic !important; }
+.cm-number { color: #5675a5 !important; }
+.cm-def { color: #02afff !important; font-style: italic !important;} 
 
 .CodeMirror {
     height: 100%;
