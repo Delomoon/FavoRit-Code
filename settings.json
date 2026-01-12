@@ -1,0 +1,25 @@
+// FavoRit Code Settings 
+// Theme: Default
+// Read documentation in /docs/customization/tutorial.md
+
+{
+    // Title Bar
+    "titleBarBackground": "#1c1c1c",
+    "titleButtonsIsHover": "#2c2c2c",
+    "titleBarForeground": "#ededed",
+
+    // Editor
+    "codeEditorBg": "#1E212B",
+    "codeEditorFg": "#d4d4d4",
+
+    // Editor numeration panel
+    "codeEditorNumBg": "#292929",
+    "codeEditorNumFg": "#9fb0c8",
+
+    // Syntax highlight
+    "sh-keyword": "#ea5f5f",
+    "sh-string": "#eaa25f",
+    "sh-comment": "#808080",
+    "sh-number": "#5675a5",
+    "sh-def": "#02afff"
+}
