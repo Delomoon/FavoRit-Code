@@ -3,18 +3,18 @@ const fs = require('fs').promises;
 
 let win;
 const createWindow = () => {
-  win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    titleBarStyle: 'hidden',
-    webPreferences: {
-        nodeIntegration: true,
-        contextIsolation: false
-    }
-  })
+    win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        titleBarStyle: 'hidden',
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false
+        }
+    })
 
-  win.loadFile("src/editor/renderer/index.html");
-  // win.webContents.openDevTools();
+    win.loadFile("src/editor/renderer/index.html");
+    // win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
