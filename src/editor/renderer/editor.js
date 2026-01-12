@@ -1,7 +1,8 @@
-import { editor } from "../code.js";
+import { editor, editorRedo, editorUndo } from "../code.js";
 
 const { ipcRenderer } = require("electron");
 const fs = require('fs').promises;
+const path = require('path'); 
 const ipc = ipcRenderer;
 
 let openedFile = '';
@@ -79,6 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 fs.writeFile(openedFile, editor.getValue())
             }
+        } else if (item.textContent === 'New File') {
+            openedFile = '';
+            editor.setValue('');
+        } else if (item.textContent == 'Undo') {
+            editorUndo();
+        } else if (item.textContent == 'Redo') {
+            editorRedo();
         }
     });
 });
