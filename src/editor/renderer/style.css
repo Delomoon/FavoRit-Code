@@ -6,10 +6,15 @@
     --titleBarForeground: #ededed;
 
     --codeEditorBg: #1E212B;
-    --codeEditorFg: #FFFFFF;
+    --codeEditorFg: #d4d4d4;
 
     --codeEditorNumBg: #292929;
     --codeEditorNumFg: #9fb0c8;
+
+    --tabMenuBg: #171920;
+    --tabMenuFg: #ededed;
+    --tabMenuSelectBg: #1E212B;
+    --tabMenuSelectFg: #f1f1f1;
 }
 
 * {
@@ -114,9 +119,9 @@ nav {
     background: #4c4c4c;
 }
 
-.workPanel {
+.ceditor {
     width: 100%;
-    height: calc(100vh - 35px);
+    height: calc(100vh - 35px - 30px);
     border: none;
 }
 
@@ -176,4 +181,23 @@ textarea.editor {
 .dropdown-content hr {
     margin-top: 1px;
     margin-bottom: 1px;
+}
+
+.tabMenu {
+    height: 30px;
+    background-color: var(--tabMenuBg);
+}
+
+.tabMenu > button {
+    background-color: var(--tabMenuBg);
+    color: var(--tabMenuFg);
+    height: 100%;
+    width: 75px;
+    font-size: 15px;
+    border: none;
+}
+
+.tabMenu > button:focus {
+    background-color: var(--tabMenuSelectBg);
+    color: var(--tabMenuSelectFg);
 }
