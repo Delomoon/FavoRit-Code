@@ -15,7 +15,7 @@
 # Download
 ```bash
 # Clone repos
-git clone https://github.com/filcherock/FavoRit-Code.git -b electron
+git clone https://github.com/filcherock/FavoRit-Code.git
 
 # Go to the created directory
 cd FavoRit-Code
