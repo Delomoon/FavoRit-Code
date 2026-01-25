@@ -15,6 +15,7 @@
     --tabMenuFg: #ededed;
     --tabMenuSelectBg: #1E212B;
     --tabMenuSelectFg: #f1f1f1;
+    --tabMenuBorder: #a90093;
 }
 
 * {
@@ -186,18 +187,33 @@ textarea.editor {
 .tabMenu {
     height: 30px;
     background-color: var(--tabMenuBg);
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
 }
 
 .tabMenu > button {
+    transition: all .2s ease;
     background-color: var(--tabMenuBg);
     color: var(--tabMenuFg);
     height: 100%;
-    width: 75px;
-    font-size: 15px;
+    min-width: 75px;
+    max-width: 150px;
+    font-size: 14px;
     border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.tabMenu > button:focus {
+.tabMenu > button:hover {
+    background-color: #262630;
+}
+
+.tabMenu > button[style*="border-bottom: 2px solid var(--tabMenuBorder);"] {
     background-color: var(--tabMenuSelectBg);
     color: var(--tabMenuSelectFg);
 }
