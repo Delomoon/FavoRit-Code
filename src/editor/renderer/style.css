@@ -213,6 +213,18 @@ textarea.editor {
     background-color: #262630;
 }
 
+.tab-button {
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    align-items: center; /* Выравнивание по центру по вертикали */
+    border: none; /* Убираем рамку */
+    background: none; /* Убираем фоновый цвет */
+    cursor: pointer; /* Указываем, что это кнопка */
+}
+
+.tab-button img {
+    margin-right: 5px; /* Отступ между изображением и текстом */
+}
+
 .tabMenu > button[style*="border-bottom: 2px solid var(--tabMenuBorder);"] {
     background-color: var(--tabMenuSelectBg);
     color: var(--tabMenuSelectFg);
