@@ -3,6 +3,12 @@
 
 <div align="center">
 
+<img src="https://img.shields.io/badge/made%20by-Delomoon-blue.svg" >
+<img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" >
+<img src="https://img.shields.io/github/languages/top/delomoon/favorit-code.svg">
+<img src="https://img.shields.io/github/issues/delomoon/favorit-code.svg">
+<img src="https://img.shields.io/github/stars/delomoon/favorit-code.svg?style=flat">
+
 [![License: MIT](https://img.shields.io/badge/License-MIT License-yellow.svg)](#)
 [![Version](https://img.shields.io/badge/version-2026.1 Beta-blue.svg)](#)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](#)
@@ -11,6 +17,9 @@
 
 # Screenshot
 <img src="assets/readme1-frcode.png">
+
+# About the project
+Favorit Code is a free source code editor. It boasts a design, functionality, and flexible customization. Favorit Code is written in JavaScript, CSS, HTML, and Python. 
 
 # Download
 ```bash
