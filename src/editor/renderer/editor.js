@@ -6,41 +6,59 @@ const path = require('path');
 const ipc = ipcRenderer;
 
 let openedFile = '';
-let openedFiles = new Map(); // Сохраняем открытые файлы
-let currentFile = null; // Текущий файл
+let openedFiles = new Map(); 
+let currentFile = null; 
 
-// Функция для добавления вкладки
 function addTab(filePath, content) {
     const fileName = path.basename(filePath);
-    
-    // Сохраняем файл в Map
-    openedFiles.set(filePath, content);
+    const fileExtension = path.extname(filePath).toLowerCase();
     
     const tabMenu = document.querySelector('#tabMenu');
     
-    // Проверяем, есть ли уже такая вкладка
     const existingTab = tabMenu.querySelector(`button[data-filepath="${filePath}"]`);
+    console.log(existingTab)
     if (existingTab) {
         existingTab.click();
         return;
     }
+
+    openedFiles.set(filePath, content);
     
     const tabButton = document.createElement('button');
-    tabButton.textContent = fileName;
     tabButton.setAttribute('data-filepath', filePath);
+    tabButton.classList.add('tab-button'); 
+    
+    const img = document.createElement('img');
+    img.style.marginRight = '5px';
+    img.style.width = '16px'; 
+    img.style.height = '16px'; 
+
+     // region Change path for build
+    switch (fileExtension) {
+        case '.py':
+            img.src = path.join(__dirname, 'lang-icons/python.svg');
+            break;
+        case '.txt':
+            img.src = path.join(__dirname, 'lang-icons/document.svg');
+            break;
+        default:
+            img.src = path.join(__dirname, 'lang-icons/template.svg');
+            break;
+    }
+
+    tabButton.appendChild(img);
+    tabButton.appendChild(document.createTextNode(fileName));
+    
     tabButton.addEventListener('click', () => {
         openTab(filePath);
     });
     
     tabMenu.appendChild(tabButton);
     
-    // Открываем файл
     openTab(filePath);
 }
 
-// Функция для открытия вкладки
 function openTab(filePath) {
-    // Сохраняем содержимое предыдущего файла перед переключением
     if (currentFile && openedFiles.has(currentFile)) {
         openedFiles.set(currentFile, editor.getValue());
     }
@@ -48,18 +66,16 @@ function openTab(filePath) {
     currentFile = filePath;
     openedFile = filePath;
     
-    // Обновляем визуальное состояние кнопок
     document.querySelectorAll('#tabMenu button').forEach(btn => {
         btn.style.fontWeight = btn.getAttribute('data-filepath') === filePath ? 'bold' : 'normal';
         btn.style.borderBottom = btn.getAttribute('data-filepath') === filePath ? '2px solid #a90093' : 'none';
     });
-    
-    // Показываем содержимое файла в редакторе
+
     const content = openedFiles.get(filePath);
     editor.setValue(content || '');
 }
 
-// Функция для закрытия вкладки
+
 function closeTab(filePath) {
     openedFiles.delete(filePath);
     const tabButton = document.querySelector(`#tabMenu button[data-filepath="${filePath}"]`);
@@ -67,7 +83,6 @@ function closeTab(filePath) {
         tabButton.remove();
     }
     
-    // Если закрыли текущий файл, открываем другой
     if (currentFile === filePath) {
         const remainingTabs = document.querySelectorAll('#tabMenu button');
         if (remainingTabs.length > 0) {
@@ -92,7 +107,6 @@ document.querySelector("#close").addEventListener("click", () => {
     ipc.send("manualClose");
 })
 
-// Отслеживаем изменения в редакторе и сохраняем в Map
 editor.on('change', () => {
     if (currentFile) {
         openedFiles.set(currentFile, editor.getValue());
@@ -180,6 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
             currentFile = null;
             openedFile = '';
             editor.setValue('');
+            addTab('Untitled.txt', '');
+            openTab('Untitled.txt');
         } else if (item.textContent == 'Undo') {
             editorUndo();
         } else if (item.textContent == 'Redo') {
