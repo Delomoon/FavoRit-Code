@@ -16,10 +16,18 @@
     "codeEditorNumBg": "#292929",
     "codeEditorNumFg": "#9fb0c8",
 
+    // Tab Menu
+    "tabMenuBg": "#171920",
+    "tabMenuFg": "#ededed",
+    "tabMenuSelectBg": "#1E212B",
+    "tabMenuSelectFg": "#f1f1f1",
+    "tabMenuBorder": "#a90093",
+    
     // Syntax highlight
     "sh-keyword": "#ea5f5f",
     "sh-string": "#eaa25f",
     "sh-comment": "#808080",
-    "sh-number": "#5675a5",
-    "sh-def": "#02afff"
+    "sh-number": "#658bc4",
+    "sh-def": "#02afff",
+    "sh-builtin": "#02afff"
 }
