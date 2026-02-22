@@ -149,26 +149,37 @@ textarea.editor {
 .dropdown-content {
     position: absolute;
     background: var(--titleBarBackground);
-    min-width: 120px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 3;
+    z-index: 4;
 }
 
-.dropdown-content button {
+hr {
+    border: none;
+    border-top: 1px solid #2c2c2c;
+}
+
+.dropdown-item {
     transition: .2s ease;
     user-select: none;
     background: var(--titleBarBackground);
     color: var(--titleBarForeground);
-    padding: 8px 6px;  
+    padding: 8px 10px;  
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border: none;
     background: none;
     cursor: pointer;
     width: 100%; 
-    text-align: left;
-    margin-left: 5px;
     font-size: 13px;
+}
+
+.shortcut {
+    color: #888; /* Цвет текста подсказки */
+    font-size: 0.9em; /* Уменьшаем размер шрифта подсказки */
+    text-align: right;
 }
 
 

@@ -48,7 +48,7 @@ function addTab(filePath, content) {
 
     tabButton.appendChild(img);
     tabButton.appendChild(document.createTextNode(fileName));
-    // close button for the tab
+
     const closeBtn = document.createElement('button');
 
     closeBtn.classList.add('tab-close-btn');
@@ -169,12 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     dropdownItems.forEach(item => {
     item.addEventListener('click', async () => {
-        if (item.textContent === 'Open File') {
+        const itemText = Array.from(item.childNodes).find(node => node.nodeType === 3)?.textContent?.trim() || '';
+        if (itemText === 'Open File') {
             const result = await ipc.invoke("openFile");
             if (result) {
                 addTab(result.filePath, result.content);
             }
-        } else if (item.textContent === 'Save As...') {
+        } else if (itemText === 'Save As...') {
             const result = await ipc.invoke('saveFile');
             if (result) {
                 const content = editor.getValue();
@@ -192,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 addTab(result, content);
             }
-        } else if (item.textContent === 'Save File') {
+        } else if (itemText === 'Save File') {
             if (!currentFile) {
                 const result = await ipc.invoke('saveFile');
                 if (result) {
@@ -205,14 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 await fs.writeFile(currentFile, content);
                 openedFiles.set(currentFile, content);
             }
-        } else if (item.textContent === 'New File') {
+        } else if (itemText === 'New File') {
             addTab('Untitled.txt', '');
             openTab('Untitled.txt');
-        } else if (item.textContent == 'Undo') {
+        } else if (itemText == 'Undo') {
             editorUndo();
-        } else if (item.textContent == 'Redo') {
+        } else if (itemText == 'Redo') {
             editorRedo();
-        } else if (item.textContent == 'Close file') {
+        } else if (itemText == 'Close file') {
             closeTab(currentFile);
         }
     });
