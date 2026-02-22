@@ -229,3 +229,14 @@ textarea.editor {
     background-color: var(--tabMenuSelectBg);
     color: var(--tabMenuSelectFg);
 }
+
+.tab-close-btn {
+    background: transparent;
+    border: none;
+    color: #cacaca;
+    cursor: pointer;
+}
+
+.tab-close-btn:hover {
+    color: #ffffff;
+}

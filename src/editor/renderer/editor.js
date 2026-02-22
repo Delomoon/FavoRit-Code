@@ -15,7 +15,7 @@ function addTab(filePath, content) {
     
     const tabMenu = document.querySelector('#tabMenu');
     
-    const existingTab = tabMenu.querySelector(`button[data-filepath="${filePath}"]`);
+    const existingTab = tabMenu ? Array.from(tabMenu.querySelectorAll('button')).find(btn => btn.getAttribute('data-filepath') === filePath) : null;
     console.log(existingTab)
     if (existingTab) {
         existingTab.click();
@@ -42,12 +42,22 @@ function addTab(filePath, content) {
             img.src = path.join(__dirname, 'lang-icons/document.svg');
             break;
         default:
-            img.src = path.join(__dirname, 'lang-icons/template.svg');
+            img.src = path.join(__dirname, 'lang-icons/other.svg');
             break;
     }
 
     tabButton.appendChild(img);
     tabButton.appendChild(document.createTextNode(fileName));
+    // close button for the tab
+    const closeBtn = document.createElement('button');
+
+    closeBtn.classList.add('tab-close-btn');
+    closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeTab(filePath);
+    });
+    tabButton.appendChild(closeBtn);
     
     tabButton.addEventListener('click', () => {
         openTab(filePath);
@@ -77,11 +87,12 @@ function openTab(filePath) {
 
 
 function closeTab(filePath) {
-    openedFiles.delete(filePath);
-    const tabButton = document.querySelector(`#tabMenu button[data-filepath="${filePath}"]`);
-    if (tabButton) {
-        tabButton.remove();
-    }
+    const tabMenu = document.querySelector('#tabMenu');
+    const existingTab = tabMenu ? Array.from(tabMenu.querySelectorAll('button')).find(btn => btn.getAttribute('data-filepath') === filePath) : null;
+    if (existingTab) {
+        existingTab.remove();
+        openedFiles.delete(filePath);
+    } 
     
     if (currentFile === filePath) {
         const remainingTabs = document.querySelectorAll('#tabMenu button');
@@ -172,7 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Обновляем информацию о файле
                 if (currentFile && openedFiles.has(currentFile)) {
                     openedFiles.delete(currentFile);
-                    document.querySelector(`#tabMenu button[data-filepath="${currentFile}"]`)?.remove();
+                    const tabMenu = document.querySelector('#tabMenu');
+                    const existingTab = tabMenu ? Array.from(tabMenu.querySelectorAll('button')).find(btn => btn.getAttribute('data-filepath') === currentFile) : null;
+                    if (existingTab) {
+                        existingTab.remove();
+                    }
                 }
                 
                 addTab(result, content);
@@ -191,15 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 openedFiles.set(currentFile, content);
             }
         } else if (item.textContent === 'New File') {
-            currentFile = null;
-            openedFile = '';
-            editor.setValue('');
             addTab('Untitled.txt', '');
             openTab('Untitled.txt');
         } else if (item.textContent == 'Undo') {
             editorUndo();
         } else if (item.textContent == 'Redo') {
             editorRedo();
+        } else if (item.textContent == 'Close file') {
+            closeTab(currentFile);
         }
     });
 });
