@@ -18,6 +18,13 @@
     --tabMenuBorder: #a90093;
 }
 
+.cm-keyword { color: #ea5f5f !important; font-weight: bold !important; }
+.cm-string { color: #eaa25f !important; }
+.cm-comment { color: #808080 !important; font-style: italic !important; }
+.cm-number { color: #658bc4 !important; }
+.cm-def { color: #02afff !important; font-style: italic !important;}
+.cm-builtin { color: #02afff !important; } 
+
 * {
     box-sizing: border-box;
 }

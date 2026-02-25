@@ -5,8 +5,7 @@ const fs = require('fs').promises;
 const path = require('path'); 
 const ipc = ipcRenderer;
 
-let openedFile = '';
-let openedFiles = new Map(); 
+let openedFiles = new Map();
 let currentFile = null; 
 
 function addTab(filePath, content) {
@@ -215,6 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
             editorRedo();
         } else if (itemText == 'Close file') {
             closeTab(currentFile);
+        } else if (itemText == 'Copy') {
+            navigator.clipboard.writeText(editor.getSelection())
         }
     });
 });
