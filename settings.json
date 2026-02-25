@@ -4,7 +4,7 @@
 
 {
     // Title Bar
-    "titleBarBackground": "#1c1c1c",
+    "titleBarBackground": "#FFFFFF",
     "titleButtonsIsHover": "#2c2c2c",
     "titleBarForeground": "#ededed",
 
