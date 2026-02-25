@@ -5,6 +5,7 @@ const fs = require('fs').promises;
 const path = require('path'); 
 const ipc = ipcRenderer;
 
+let openedFile = '';
 let openedFiles = new Map();
 let currentFile = null; 
 
