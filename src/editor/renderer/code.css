@@ -1,6 +1,7 @@
 .CodeMirror {
     height: 100%;
     width: 100%;
+    min-width: 0;
     background: var(--codeEditorBg);
     color: var(--codeEditorFg);
     font-size: 18px;

@@ -84,6 +84,16 @@ ipcMain.handle('saveFile', async () => {
     return result.filePath;
 });
 
+ipcMain.handle('selectFolder', async () => {
+    const result = await dialog.showOpenDialog({
+        properties: ['openDirectory']
+    });
+    
+    if (result.canceled) {
+        return null;
+    }
+    return result.filePaths[0];
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

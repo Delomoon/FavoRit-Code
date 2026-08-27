@@ -11,12 +11,13 @@
     "url": "git+https://github.com/filcherock/FavoRit-Code.git"
   },
   "license": "MIT",
-  "author": "filcher",
+  "author": "delomoon",
   "type": "commonjs",
   "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "devDependencies": {
     "codemirror": "^5.65.20",

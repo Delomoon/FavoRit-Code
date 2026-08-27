@@ -5,6 +5,7 @@ export var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
     tabSize: 4,
     mode: "python",
     theme: "default",
+    scrollbarStyle: "native",
     extraKeys: {
         "Ctrl-Space": "autocomplete"
     },
