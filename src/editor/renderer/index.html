@@ -38,6 +38,7 @@
                 <div class="dropdown-content" style="display: none;">
                     <button class="dropdown-item">Undo</button>
                     <button class="dropdown-item">Redo</button>
+                    <hr>
                     <button class="dropdown-item">Cut</button>
                     <button class="dropdown-item">Copy</button>
                     <button class="dropdown-item">Paste</button>
@@ -72,9 +73,47 @@
             <button id="close"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </nav>
-    <div class="tabMenu" id="tabMenu"></div>
-    <div class="ceditor">
-        <textarea id="code" class="editor"></textarea>
+    <div class="main-container">
+        <aside class="activity-bar sidebar-open" id="activityBar" aria-label="Activity bar">
+            <button id="sidebarShowBtn" class="activity-bar-btn sidebar-show-btn visible" title="Open Explorer" aria-label="Open Explorer">
+                <i class="fa-regular fa-copy"></i>
+            </button>
+            <!-- Use later -->
+            <!--<button class="activity-bar-btn" title="Search" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <button class="activity-bar-btn" title="Source Control" aria-label="Source Control">
+                <i class="fa-solid fa-code-branch"></i>
+            </button>
+            <button class="activity-bar-btn" title="Extensions" aria-label="Extensions">
+                <i class="fa-solid fa-shapes"></i>
+            </button>-->
+        </aside>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title-group">
+                    <h3 style="user-select: none; font-family: Inter;">EXPLORER</h3>
+                </div>
+                <div class="sidebar-buttons-group">
+                    <button id="openFolderBtn" class="sidebar-btn" title="Open Folder"><i class="fa-solid fa-folder-open"></i></button>
+                    <button id="sidebarToggle" class="sidebar-toggle" title="Hide Sidebar"><i class="fa-solid fa-chevron-left"></i></button>
+                </div>
+            </div>
+            <div class="file-tree" id="fileTree" style="font-family: Inter;"></div>
+            <div class="sidebar-resizer" id="sidebarResizer"></div>
+        </div>
+        <div class="editor-container">
+            <div class="tabMenu" id="tabMenu"></div>
+            <div class="editor-workspace">
+                <div class="ceditor">
+                    <textarea id="code" class="editor"></textarea>
+                </div>
+                <aside class="minimap" id="minimap" aria-label="Code minimap">
+                    <canvas id="minimapCanvas"></canvas>
+                    <div class="minimap-viewport" id="minimapViewport"></div>
+                </aside>
+            </div>
+        </div>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
